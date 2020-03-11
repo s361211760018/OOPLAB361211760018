@@ -15,12 +15,12 @@ public class EmployeeDAOImpl implements employeeDAO {
     public static final String GET_All_emp = "select * from Employee";
     public static final String ADD_EMP = "insert into Employee" +
             "(empID,name,position,salary) values (?,?,?,?)";
-    public static final String UPDATE_EMP = "update Employee dat" +
-            "name = ?,position = ?,salary = ? where id = ?";
-    public static final String DEDETE_EMP = "delete from Employee"+
-            "where empID =?";
+    public static final String UPDATE_EMP = "update Employee set" +
+            " name = ?,position = ?,salary = ? where empID = ?";
+    public static final String DELETE_EMP = "delete from Employee"+
+            " where empID =?";
     public static final String FIND_EMP_BY_ID = "select * from Employee"+
-            "where empID = ?";
+            " where empID = ?";
 
 
     //create class instant
@@ -160,7 +160,7 @@ public class EmployeeDAOImpl implements employeeDAO {
             //set parameter
             ps.setInt(1,id);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            if (rs.next()){
                 int empid = rs.getInt(1);
                 String name = rs.getString(2);
                 String position = rs.getString(3);
